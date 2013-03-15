@@ -9,7 +9,7 @@
       </span><BR>
     <span id="content"><%= post.body %></span><BR> 
     <% post.tags.each do |tag| %>
-      <span id="blogtags"><li><%= tag.name %></li></span>
+      <span id="blogtags"><%= tag.name %></span>
     <% end %>
    <BR><BR>
   <% end %>
