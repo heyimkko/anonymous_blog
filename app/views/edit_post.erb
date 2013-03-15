@@ -1,0 +1,21 @@
+<h1>Edit Blog Entry</h1>
+<form action="/posts/:post_id/edit" method="post" name="create-post-form" id="create-post">
+  <li>
+    Title:<BR>
+    <input type="text" name="title" size="63" value="<%= @post.title %>">
+  </li><BR>
+  <li>
+    Content:<BR><textarea rows="10", cols="64", name="body"><%= @post.body %></textarea>
+  </li><BR>
+  <li>
+    Tags:<BR>
+    <input type="text" name="tags" size="63" value="<% @tags.each {|tag| p tag.name } %>">
+     <%# TODO: TAGS DONT SHOW UP %>
+  </li><BR>
+    <input type="submit" value="Submit Post!">
+</form>
+
+<form action="/posts/<%= @post.id %>/delete" method="post" >
+  <input type="hidden" name="id" value="<%= @post.id %>">
+  <input type="submit" value="Delete post">
+</form>

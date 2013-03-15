@@ -1,0 +1,18 @@
+<% if @post %>
+  <h1><%= @post.title %></h1><BR>
+  <span id="content"><%= @post.body %></span><BR> 
+  <% @post.tags.each do |tag| %>
+    <span id="blogtags"><%= tag.name %></span>
+  <% end %>
+   <BR><BR>
+<% end %>
+
+<form action="/posts/<%= @post.id %>/delete" method="get" >
+  <input type="hidden" name="id" value="<%= @post.id %>">
+  <input type="submit" value="Delete post">
+</form>
+
+<form action="/posts/<%= @post.id %>/edit" method="get" >
+  <input type="hidden" name="id" value="<%= @post.id %>">
+  <input type="submit" value="Edit post">
+</form>
