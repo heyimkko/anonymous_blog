@@ -25,14 +25,30 @@ get '/posts/:post_id' do
   erb :single_post
 end
 
-get '/posts/:post_id/edit' do 
-  @post = Post.find(params[:post_id])
-  @tags = Post.find(params[:post_id]).tags
-  erb :edit_post
+post '/posts/:post_id/update' do
+  Post.update(params[:post_id], params[:update])
+  all_tags = []
+  formatted_tags = params[:tag].values.join.split(", ")
+  formatted_tags.each do |tag|
+    all_tags << Tag.create(name: tag)
+  end
+
+  @updatedpost = Post.find(params[:post_id])
+  @updatedpost.tags = all_tags
+
+  redirect '/'
 end
 
-post '/posts/:post_id/edit' do
-  Post.update(params[:post_id], params)
+get '/posts/:post_id/edit' do 
+  @post = Post.find(params[:post_id])
+
+  @tags = []
+  Post.find(params[:post_id]).tags.each do |tag|
+    @tags << tag.name
+  end 
+  @tags = @tags.join(", ")
+
+  erb :edit_post
 end
 
 post '/posts/:post_id/delete' do

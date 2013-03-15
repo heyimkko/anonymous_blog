@@ -1,5 +1,7 @@
 <h1>Heavy Metal Blog</h1>
-
+<center><a href="/posts/new">+Submit New Post+</a></center>
+<BR>
+<BR>
 <% if @posts %>
   <% @posts.each do |post| %>
     <span id="blogtitle">
@@ -7,12 +9,10 @@
         <%= post.title %>
       </a>
       </span><BR>
-    <span id="content"><%= post.body %></span><BR> 
+    <span id="content"><%= post.body.gsub(/\n/, '<br/>') %></span><BR> 
     <% post.tags.each do |tag| %>
-      <span id="blogtags"><%= tag.name %></span>
+      <span id="blogtags"><a href="/tags/<%= tag.name %>"><%= tag.name %></a></span>
     <% end %>
    <BR><BR>
   <% end %>
 <% end %>
-
-<a href="/posts/new">Create New Post</a><BR>

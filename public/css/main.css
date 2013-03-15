@@ -25,8 +25,12 @@ th {
 }
 
 a {
-  color: #AD001D;
+  color: #E60026;
   text-decoration: none;
+}
+
+a:hover {
+  color: #AD001D;
 }
 
 h1 {
@@ -51,13 +55,25 @@ h1 {
   font-family: 'Marcellus SC';
 }
 
+#blogtitle a {
+  color: #AD001D;
+}
+
 #blogtags:after {
   content: ",";
 }
 
 #blogtags {
-  font-size: 0.4em;
+  font-size: 0.5em;
   /* Links in blogtags should be a shinier red than AD001D */
+}
+
+#blogtags a {
+  color: #E60026;
+}
+
+#blogtags a:hover {
+  color: #AD001D;
 }
 
 .categories {
@@ -78,8 +94,11 @@ nav {
 
 nav a {
   color: white;
-  /*letter-spacing: -2px;*/
   text-shadow: 2px 2px #AD001D;
+}
+
+nav a:hover {
+  color: white;
 }
 
 nav li {
